@@ -30,8 +30,11 @@ public class FindableImpl implements Findable {
         System.out.println("Enter the actor's name");
         String nameActor = scanner.nextLine();
         for (Movie movie: movies){
-            if (movie.getCast().equals(nameActor) || movie.getCast().contains(nameActor)){
-                System.out.println(movie);
+            List<Cast> casts = movie.getCast();
+            for (Cast cast: casts) {
+                if (cast.getActorFullName().equalsIgnoreCase(nameActor) || cast.getActorFullName().contains(nameActor)) {
+                    System.out.println(movie);
+                }
             }
         }
     }
